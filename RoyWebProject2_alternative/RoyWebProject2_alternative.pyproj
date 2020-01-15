@@ -67,6 +67,7 @@
     <Content Include="RoyWebProject2_alternative\templates\contact.html" />
     <Content Include="RoyWebProject2_alternative\templates\index.html" />
     <Content Include="RoyWebProject2_alternative\templates\layout.html" />
+    <Content Include="RoyWebProject2_alternative\templates\project.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 

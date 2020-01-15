@@ -16,22 +16,12 @@ def home():
         year=datetime.now().year,
     )
 
-@app.route('/contact')
-def contact():
-    """Renders the contact page."""
-    return render_template(
-        'contact.html',
-        title='Contact',
-        year=datetime.now().year,
-        message='Your contact page.'
-    )
-
-@app.route('/about')
-def about():
+@app.route('/project')
+def project():
     """Renders the about page."""
     return render_template(
-        'about.html',
-        title='About',
+        'project.html',
+        title='Project',
         year=datetime.now().year,
-        message='Your application description page.'
+        message='My Project'
     )

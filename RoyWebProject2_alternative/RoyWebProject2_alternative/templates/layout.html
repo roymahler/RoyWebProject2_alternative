@@ -1,14 +1,15 @@
 ﻿<!DOCTYPE html>
 <html>
-<title>RoyWebProject2</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="/static/content/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="/static/content/site.css" />
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<head>
+    <title>RoyWebProject2</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/static/content/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
 <body style="max-width:2000px">
-
-    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:black;">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:black">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -20,120 +21,22 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="#" class="w3-button w3-black w3-block w3-hover-blue-grey w3-padding-16">About Me</a></li>
-                    <li><a href="#work" class="w3-button w3-black w3-block w3-hover-grey w3-padding-16">My Work</a></li>
-                    <li><a href="#work" class="w3-button w3-black w3-block w3-hover-indigo w3-padding-16">Pictures</a></li>
-                    <li><a href="#contact" class="w3-button w3-black w3-block w3-hover-teal w3-padding-16">Contact</a></li>
-                    <li><a href="#contact" class="w3-button w3-black w3-block w3-hover-dark-grey w3-padding-16">Swing By</a></li>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('project') }}">Project</a></li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="w3-half w3-black w3-container w3-center" style="height:930px">
-            <div class="w3-padding-64">
-                <a href="#" class="w3-button w3-black w3-block w3-hover-blue-grey w3-padding-16">About Me</a>
-                <a href="#work" class="w3-button w3-black w3-block w3-hover-grey w3-padding-16">My Work</a>
-                <a href="#work" class="w3-button w3-black w3-block w3-hover-indigo w3-padding-16">Pictures</a>
-                <a href="#contact" class="w3-button w3-black w3-block w3-hover-teal w3-padding-16">Contact</a>
-                <a href="#contact" class="w3-button w3-black w3-block w3-hover-dark-grey w3-padding-16">Swing By</a>
-            </div>
-        </div>
-        <div class="w3-half w3-blue-grey w3-container" style="height:930px">
-            <div class="w3-padding-64 w3-center">
-                <h1>About Me</h1>
-                <img src="https://www.tonkabi.com/img/avatar-m.svg" class="w3-margin w3-circle" alt="Person" style="width:50%">
-                <div class="w3-left-align w3-padding-large">
-                    <p>I'm Roy Mahler, a student in Tichonet, I live in Israel and I like coding. I have a brother and a sister and two pets - a dog named Jessie and a cat named Maggie.</p>
-                    <p>This is my project at computer science class, where I need to make a photo album with six pictures about any subject. I chose to make it about "The History of Warships". I wanted to make this project because I am really interested in ships and warships in particular. I hope it will interest you as well and that you will enjoy reading the page.</p>
-                </div>
-            </div>
-        </div>
+    <div class="container body-content">
+        {% block content %}{% endblock %}
+        <hr />
+        <footer>
+            <p>&copy; {{ year }} - My Flask Application</p>
+        </footer>
     </div>
 
-    <div class="w3-row">
-        <div class="w3-half w3-light-grey w3-center" style="min-height:2068px" id="work">
-            <div class="w3-padding-64">
-                <h2>My Work</h2>
-                <p>The History of Warships</p>
-                <table style="max-width: 700px" align="center">
-                    <tr>
-                        <td> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Trireme_1.jpg/250px-Trireme_1.jpg" style="width: 300px; height: 300px;"> </td>
-
-                        <td style="direction: rtl; text-align: right" class="w3-xlarge">תלת חתרית (טרירמה) רומאית, ספינת משוטים מעץ שהייתה בין הספינות הנפוצות ביותר בעולם העתיק, חימושה העיקרי הוא איל ניגוח</td>
-                    </tr>
-                    <tr>
-                        <td> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Galleon-spanish.jpg/250px-Galleon-spanish.jpg" style="width:300px;height:300px;"> </td>
-                        <td style="direction: rtl; text-align: right" class="w3-xlarge">גלאון, ספינת מפרסים מעץ שהחלה להיות נפוצה בסביבות המאה ה-16, חימושה העיקרי היה תותחים עם קליבר של 50 סנטימטרים</td>
-                    </tr>
-                    <tr>
-                        <td> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Victory_Portsmouth_um_1900.jpg/250px-Victory_Portsmouth_um_1900.jpg" style="width:300px;height:300px;"> </td>
-                        <td style="direction: rtl; text-align: right" class="w3-xlarge">אניית קו, ספינת מפרסים מעץ שהייתה נפוצה מאמצע המאה ה-17, חימושה העיקרי היה תותחים, אניית הקו הייתה הראשונה שהשתמשה בפגזים</td>
-                    </tr>
-                    <tr>
-                        <td> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Turtle_model_at_the_Royal_navy_submarine_museum.jpg/220px-Turtle_model_at_the_Royal_navy_submarine_museum.jpg" style="width:300px;height:300px;"> </td>
-                        <td style="direction: rtl; text-align: right" class="w3-xlarge">צוללת ה"צב", ה"צב" הייתה צוללת המלחמה הראשונה שפעלה מ-1775, היא הכילה אדם אחד שהיה מבצע סוג של חתירה על מנת לזוז ממקום למקום, הצוללת הייתה ממתכת ונועדה להצמיד מתקני נפץ לספינות</td>
-                    </tr>
-                    <tr>
-                        <td> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/HMS_Dreadnought_1906_H63596.jpg/250px-HMS_Dreadnought_1906_H63596.jpg" style="width:300px;height:300px;"> </td>
-                        <td style="direction: rtl; text-align: right" class="w3-xlarge">אניית המערה דרדנוט, הייתה אחת הספינות החשובות ביותר ששינתה את הלחימה הימית, פעלה מ-1906 על ידי הבריטים, הייתה מחופה בשריון פלדה עבה והייתה חמושה בחמישה צריחי תותחי 12 אינץ' ומשגרי טורפדו</td>
-                    </tr>
-                    <tr>
-                        <td> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/HMS_Ark_Royal_h85716.jpg/300px-HMS_Ark_Royal_h85716.jpg" style="width:300px;height:300px;"> </td>
-                        <td style="direction: rtl; text-align: right" class="w3-xlarge">נושאת המטוסים ארק רויאל, הייתה נושאת המטוסים הראשונה, היא פעלה מ-1938 על ידי הבריטים, הייתה מחופה בשריון פלדה עבה ונשאה בין 50 ל-60 מטוסים וחומשה בכמה תותחים להגנה מינימלית</td>
-                    </tr>
-                </table>
-            </div><br>
-        </div>
-        <div class="w3-half w3-indigo w3-container" style="min-height:1535px">
-            <div class="w3-padding-64 w3-center">
-                <div class="w3-container w3-responsive">
-                    <p><img src="https://i.pinimg.com/originals/ae/07/df/ae07df8afc0dca2fc280d01c76528993.png" style="width:900px;height:300px;"></p>
-                    <p><img src="https://upload.wikimedia.org/wikipedia/commons/c/c6/Fleet_5_nations.jpg" style="width:900px;height:600px;"></p>
-                    <p><img src="https://images.globes.co.il/images/NewGlobes/big_image_800/2019/c00_shutter800x392.2019320T161934.jpg" style="width:900px;height:400px;"></p>
-                    <p><img src="https://i.pinimg.com/originals/b4/d1/98/b4d198060be5ee57be972b0c4a463ca8.jpg" style="width:900px;height:600px;"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="w3-row" id="contact">
-        <div class="w3-half w3-dark-grey w3-container w3-center" style="height:700px">
-            <div class="w3-padding-64">
-                <h1>Swing By</h1>
-            </div>
-            <div class="w3-padding-64">
-                <p>...for a cup of coffee, or whatever.</p>
-                <p>Tichonet, Tel-Aviv, Israel</p>
-                <p>+972-0533356605</p>
-                <p>roy@roymahler.com</p>
-            </div>
-        </div>
-        <div class="w3-half w3-teal w3-container" style="height:700px">
-            <div class="w3-padding-64 w3-padding-large">
-                <h1>Contact</h1>
-                <p class="w3-opacity">SEND YOUR OPINION ON THE PROJECT</p>
-                <form class="w3-container w3-card w3-padding-32 w3-white" action="/action_page.php" target="_blank">
-                    <div class="w3-section">
-                        <label>Name</label>
-                        <input class="w3-input" style="width:100%;" type="text" required name="Name">
-                    </div>
-                    <div class="w3-section">
-                        <label>Email</label>
-                        <input class="w3-input" style="width:100%;" type="text" required name="Email">
-                    </div>
-                    <div class="w3-section">
-                        <label>Message</label>
-                        <input class="w3-input" style="width: 100%;" type="text" required name="Message">
-                    </div>
-                    <button type="submit" class="w3-button w3-teal w3-right">Send</button>
-                </form>
-            </div>
-        </div>
-    </div>
-    <footer class="w3-container w3-black w3-padding-16">
-        <p>I used some tools and tempates from w3schools</p>
-        <p><a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-    </footer>
-</body>
+    <script src="/static/scripts/jquery-1.10.2.js"></script>
+    <script src="/static/scripts/bootstrap.js"></script>
+    <script src="/static/scripts/respond.js"></script>
+    {% block scripts %}{% endblock %}
