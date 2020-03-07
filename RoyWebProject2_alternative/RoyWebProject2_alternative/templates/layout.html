@@ -23,6 +23,9 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url_for('home') }}">Home</a></li>
                     <li><a href="{{ url_for('project') }}">Project</a></li>
+                    <li><a href="{{ url_for('Register') }}">Register</a></li>
+                    <li><a href="{{ url_for('Login') }}">Log in</a></li>
+                    <li><a href="{{ url_for('data') }}">Data</a></li>
                 </ul>
             </div>
         </div>
@@ -32,7 +35,7 @@
         {% block content %}{% endblock %}
         <hr />
         <footer>
-            <p>&copy; {{ year }} - My Flask Application</p>
+            <p>&copy; {{ year }} - Roy Mahler</p>
         </footer>
     </div>
 

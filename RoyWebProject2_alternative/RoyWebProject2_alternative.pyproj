@@ -27,15 +27,23 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="RoyWebProject2_alternative\Models\QueryFormStracture.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="RoyWebProject2_alternative\Models\LocalDatabaseRoutines.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="runserver.py" />
     <Compile Include="RoyWebProject2_alternative\__init__.py" />
     <Compile Include="RoyWebProject2_alternative\views.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="RoyWebProject2_alternative\" />
+    <Folder Include="RoyWebProject2_alternative\Models\" />
     <Folder Include="RoyWebProject2_alternative\static\" />
     <Folder Include="RoyWebProject2_alternative\static\content\" />
     <Folder Include="RoyWebProject2_alternative\static\fonts\" />
+    <Folder Include="RoyWebProject2_alternative\static\Data\" />
     <Folder Include="RoyWebProject2_alternative\static\scripts\" />
     <Folder Include="RoyWebProject2_alternative\templates\" />
   </ItemGroup>
@@ -44,6 +52,9 @@
     <Content Include="RoyWebProject2_alternative\static\content\bootstrap.css" />
     <Content Include="RoyWebProject2_alternative\static\content\bootstrap.min.css" />
     <Content Include="RoyWebProject2_alternative\static\content\site.css" />
+    <Content Include="RoyWebProject2_alternative\static\Data\capitals.csv" />
+    <Content Include="RoyWebProject2_alternative\static\Data\users.csv" />
+    <Content Include="RoyWebProject2_alternative\static\Data\warships database.csv" />
     <Content Include="RoyWebProject2_alternative\static\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="RoyWebProject2_alternative\static\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="RoyWebProject2_alternative\static\fonts\glyphicons-halflings-regular.ttf" />
@@ -68,6 +79,10 @@
     <Content Include="RoyWebProject2_alternative\templates\index.html" />
     <Content Include="RoyWebProject2_alternative\templates\layout.html" />
     <Content Include="RoyWebProject2_alternative\templates\project.html" />
+    <Content Include="RoyWebProject2_alternative\templates\register.html" />
+    <Content Include="RoyWebProject2_alternative\templates\login.html" />
+    <Content Include="RoyWebProject2_alternative\templates\data.html" />
+    <Content Include="RoyWebProject2_alternative\templates\dataSet.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 

@@ -1,0 +1,99 @@
+﻿{% extends "layout.html" %}
+{% block content %}
+<div dir="ltr">
+    <div class="Jumbotron">
+        <h1> Warships Data Base</h1>
+        <p>The Data Base includes warships from WWI to these days</p>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th> field name </th>
+                <th> explanation </th>
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr>
+                <td> Nationality</td>
+                <td> Wich country the ship belongs to</td>
+            </tr>
+
+            <tr>
+                <td> Name</td>
+                <td> The name of the ship </td>
+
+            </tr>
+            <tr>
+                <td> Pennant/Designation</td>
+                <td> What designation this ship belongs to</td>
+            </tr>
+            <tr>
+                <td> Warship Class</td>
+                <td> What class the ship is</td>
+            </tr>
+            <tr>
+                <td> Type</td>
+                <td> What type of warship is the ship</td>
+            </tr>
+            <tr>
+                <td> ID</td>
+                <td> The ID of the ship</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .collapsible {
+            background-color: #777;
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+
+            .active, .collapsible:hover {
+                background-color: #555;
+            }
+
+        .content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<button type="button" class="collapsible">DataBase</button>
+<div class="content">
+    <p> {{ data | safe}}</p>
+</div>
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+{% endblock %}
