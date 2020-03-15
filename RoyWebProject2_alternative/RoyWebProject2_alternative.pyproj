@@ -53,6 +53,7 @@
     <Content Include="RoyWebProject2_alternative\static\content\bootstrap.min.css" />
     <Content Include="RoyWebProject2_alternative\static\content\site.css" />
     <Content Include="RoyWebProject2_alternative\static\Data\capitals.csv" />
+    <Content Include="RoyWebProject2_alternative\static\Data\Messages.csv" />
     <Content Include="RoyWebProject2_alternative\static\Data\users.csv" />
     <Content Include="RoyWebProject2_alternative\static\Data\warships database.csv" />
     <Content Include="RoyWebProject2_alternative\static\fonts\glyphicons-halflings-regular.eot" />
@@ -83,6 +84,7 @@
     <Content Include="RoyWebProject2_alternative\templates\login.html" />
     <Content Include="RoyWebProject2_alternative\templates\data.html" />
     <Content Include="RoyWebProject2_alternative\templates\dataSet.html" />
+    <Content Include="RoyWebProject2_alternative\templates\queri.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 

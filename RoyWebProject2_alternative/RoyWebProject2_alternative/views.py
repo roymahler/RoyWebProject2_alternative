@@ -70,7 +70,7 @@ def Register():
             db_table = ""
 
             flash('Thanks for registering new user - '+ form.FirstName.data + " " + form.LastName.data )
-            # Here you should put what to do (or were to go) if registration was good
+            return redirect('/login')
         else:
             flash('Error: User with this Username already exist ! - '+ form.username.data)
             form = UserRegistrationFormStructure(request.form)
@@ -90,7 +90,7 @@ def Login():
     if (request.method == 'POST' and form.validate()):
         if (db_Functions.IsLoginGood(form.username.data, form.password.data)):
             flash('Login approved!')
-            #return redirect('<were to go if login is good!')
+            return redirect('/queri')
         else:
             flash('Error in - Username and/or password')
    
@@ -121,4 +121,14 @@ def dataSet():
         title='dataSet',
         year=datetime.now().year,
         message='My Data Set', data = df.to_html(classes = "table table-hover")
+    )
+
+@app.route('/queri')
+def queri():
+    """Renders the about page."""
+    return render_template(
+        'queri.html',
+        title='Queri',
+        year=datetime.now().year,
+        message='My Queri'
     )
