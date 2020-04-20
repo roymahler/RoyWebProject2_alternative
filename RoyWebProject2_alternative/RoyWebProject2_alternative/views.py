@@ -34,7 +34,8 @@ from wtforms import ValidationError
 
 from RoyWebProject2_alternative.models.QueryFormStracture import QueryFormStructure 
 from RoyWebProject2_alternative.models.QueryFormStracture import LoginFormStructure
-from RoyWebProject2_alternative.models.QueryFormStracture import UserRegistrationFormStructure 
+from RoyWebProject2_alternative.models.QueryFormStracture import UserRegistrationFormStructure
+from RoyWebProject2_alternative.models.QueryFormStracture import DataQuery
 
 ##from RoyWebProject2_alternative.Models.LocalDatabaseRoutines import IsUserExist, IsLoginGood, AddNewUser
 
@@ -90,7 +91,7 @@ def Login():
     if (request.method == 'POST' and form.validate()):
         if (db_Functions.IsLoginGood(form.username.data, form.password.data)):
             flash('Login approved!')
-            return redirect('/queri')
+            return redirect('/query')
         else:
             flash('Error in - Username and/or password')
    
@@ -123,12 +124,29 @@ def dataSet():
         message='My Data Set', data = df.to_html(classes = "table table-hover")
     )
 
-@app.route('/queri')
-def queri():
-    """Renders the about page."""
+@app.route('/query', methods=['GET', 'POST'])
+def query():
+    form = DataQuery(request.form)
+    chart = " "
+    table = " "
+
+    if (request.method == 'POST' and form.validate()):  
+        ShipName = form.ShipName.data
+        ShipClass = form.ShipClass.data
+        dfData = df.loc[df["Name"] == ShipName, "Type"].values[0]
+        dfGroup = df.loc[df["Type"] == dfData]
+        graph = plt.figure()
+        plt.tight_layout()
+        dfGroup.groupby("Warship Class")["Warship Class"].value_counts().plot(kind = 'barh', figsize=(15, 10), color = ['r' if sorted(dfGroup["Warship Class"].unique())[i] == ShipClass else 'b' for i in range(len(dfGroup["Warship Class"].unique()))])
+        chart = DataQuery.plot_to_img(graph)
+        table = dfGroup.to_html(classes="table table-hover")
+
     return render_template(
-        'queri.html',
-        title='Queri',
+        'query.html',
+        chart = chart,
+        table = table,
+        title='Query',
+        form=form, 
         year=datetime.now().year,
-        message='My Queri'
+        message='My Query'
     )

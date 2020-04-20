@@ -11,6 +11,15 @@ from wtforms import TextField, TextAreaField, SelectField, DateField
 from wtforms import validators, ValidationError
 
 from wtforms.validators import DataRequired
+
+import base64
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from os import path
+import io
 ### ----------------------------------------------------------- ###
 
 
@@ -56,7 +65,7 @@ class LoginFormStructure(FlaskForm):
 ##   the 'submit' button - the button the user will press to have the 
 ##                         form be "posted" (sent to the server for process)
 class UserRegistrationFormStructure(FlaskForm):
-    FirstName  = StringField('First name:  ' , validators = [DataRequired()])
+    FirstName  = StringField('First namea:  ' , validators = [DataRequired()])
     LastName   = StringField('Last name:  ' , validators = [DataRequired()])
     PhoneNum   = StringField('Phone number:  ' , validators = [DataRequired()])
     EmailAddr  = StringField('E-Mail:  ' , validators = [DataRequired()])
@@ -77,3 +86,14 @@ class UserRegistrationFormStructure(FlaskForm):
 #    submit = SubmitField('Submit')
 
 
+class DataQuery(FlaskForm):
+    ShipName  = StringField('Ship Name:  ' , validators = [DataRequired()])
+    ShipClass   = StringField('Warship Class:  ' , validators = [DataRequired()])
+    submit = SubmitField('Submit')
+
+    def plot_to_img(fig):
+        pngImage = io.BytesIO()
+        FigureCanvas(fig).print_png(pngImage)
+        pngImageB64String = "data:image/png;base64,"
+        pngImageB64String += base64.b64encode(pngImage.getvalue()).decode('utf8')
+        return pngImageB64String

@@ -84,7 +84,7 @@
     <Content Include="RoyWebProject2_alternative\templates\login.html" />
     <Content Include="RoyWebProject2_alternative\templates\data.html" />
     <Content Include="RoyWebProject2_alternative\templates\dataSet.html" />
-    <Content Include="RoyWebProject2_alternative\templates\queri.html" />
+    <Content Include="RoyWebProject2_alternative\templates\query.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 
