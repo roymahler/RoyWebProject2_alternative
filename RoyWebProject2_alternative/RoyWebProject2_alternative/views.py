@@ -113,7 +113,7 @@ def data():
         message='My Data'
     )
 
-df = pd.read_csv("C:\\Users\\royma\\source\\repos\\RoyWebProject2_alternative\\RoyWebProject2_alternative\\RoyWebProject2_alternative\\static\\Data\\warships database.csv")
+df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\warships database.csv'))
 @app.route  ('/dataSet')
 def dataSet():
     """Renders the about page."""
