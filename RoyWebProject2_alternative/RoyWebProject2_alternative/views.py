@@ -1,23 +1,25 @@
 """
 Routes and views for the flask application.
 """
-
-from datetime import datetime
-from flask import render_template
-from RoyWebProject2_alternative import app
+### ----------------------------------------------------------- ###
+### --- include all software packages and libraries needed ---- ###
+### ----------------------------------------------------------- ###
+from datetime                                                import datetime
+from flask                                                   import render_template
+from RoyWebProject2_alternative                              import app
 from RoyWebProject2_alternative.models.LocalDatabaseRoutines import create_LocalDatabaseServiceRoutines
 
 
 from datetime import datetime
-from flask import render_template, redirect, request
+from flask    import render_template, redirect, request
 
-from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
+from flask_wtf          import FlaskForm
+from wtforms            import StringField, SubmitField
 from wtforms.validators import DataRequired
 
-import numpy as np
+import numpy             as np
 import matplotlib.pyplot as plt
-import pandas as pd
+import pandas            as pd
 
 import json 
 import requests
@@ -36,12 +38,13 @@ from RoyWebProject2_alternative.models.QueryFormStracture import QueryFormStruct
 from RoyWebProject2_alternative.models.QueryFormStracture import LoginFormStructure
 from RoyWebProject2_alternative.models.QueryFormStracture import UserRegistrationFormStructure
 from RoyWebProject2_alternative.models.QueryFormStracture import DataQuery
-
-##from RoyWebProject2_alternative.Models.LocalDatabaseRoutines import IsUserExist, IsLoginGood, AddNewUser
+### ----------------------------------------------------------- ###
 
 db_Functions = create_LocalDatabaseServiceRoutines() 
 
 @app.route('/')
+
+## creating the home page
 @app.route('/home')
 def home():
     """Renders the home page."""
@@ -51,6 +54,7 @@ def home():
         year=datetime.now().year,
     )
 
+## creating the photo album page
 @app.route('/project')
 def project():
     """Renders the about page."""
@@ -61,6 +65,7 @@ def project():
         message='My Project'
     )
 
+## creating the registration page
 @app.route('/register', methods=['GET', 'POST'])
 def Register():
     form = UserRegistrationFormStructure(request.form)
@@ -84,6 +89,7 @@ def Register():
         repository_name='Pandas',
         )
 
+## creating the login page
 @app.route('/login', methods=['GET', 'POST'])
 def Login():
     form = LoginFormStructure(request.form)
@@ -103,6 +109,7 @@ def Login():
         repository_name='Pandas',
         )
 
+## creating the data page
 @app.route('/data')
 def data():
     """Renders the about page."""
@@ -113,6 +120,7 @@ def data():
         message='My Data'
     )
 
+## creating the dataSet page
 df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\warships database.csv'))
 @app.route  ('/dataSet')
 def dataSet():
@@ -124,6 +132,7 @@ def dataSet():
         message='My Data Set', data = df.to_html(classes = "table table-hover")
     )
 
+## creating the query page
 @app.route('/query', methods=['GET', 'POST'])
 def query():
     form = DataQuery(request.form)
@@ -133,13 +142,19 @@ def query():
     if (request.method == 'POST' and form.validate()):  
         ShipName = form.ShipName.data
         ShipClass = form.ShipClass.data
+
+        ## locating the fields that have been filled by the user
         dfData = df.loc[df["Name"] == ShipName, "Type"].values[0]
         dfGroup = df.loc[df["Type"] == dfData]
+
         graph = plt.figure()
         plt.tight_layout()
+
+        ## generating the graph
         dfGroup.groupby("Warship Class")["Warship Class"].value_counts().plot(kind = 'barh', figsize=(15, 10), color = ['r' if sorted(dfGroup["Warship Class"].unique())[i] == ShipClass else 'b' for i in range(len(dfGroup["Warship Class"].unique()))])
+        
         chart = DataQuery.plot_to_img(graph)
-        table = dfGroup.to_html(classes="table table-hover")
+        table = dfGroup.to_html(classes="table table-hover")    
 
     return render_template(
         'query.html',

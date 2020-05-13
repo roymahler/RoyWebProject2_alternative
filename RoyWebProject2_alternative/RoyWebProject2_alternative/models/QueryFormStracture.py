@@ -2,38 +2,27 @@
 ### ----------------------------------------------------------- ###
 ### --- include all software packages and libraries needed ---- ###
 ### ----------------------------------------------------------- ###
-from datetime import datetime
+from datetime  import datetime
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
-from wtforms import Form, BooleanField, PasswordField
-from wtforms import TextField, TextAreaField, SelectField, DateField
-from wtforms import validators, ValidationError
+from wtforms   import StringField, SubmitField
+from wtforms   import Form, BooleanField, PasswordField
+from wtforms   import TextField, TextAreaField, SelectField, DateField
+from wtforms   import validators, ValidationError
 
 from wtforms.validators import DataRequired
+from matplotlib.figure  import Figure
+from os                 import path
+
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 
 import base64
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
-from matplotlib.figure import Figure
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from os import path
 import io
+
+import pandas            as pd
+import numpy             as np
+import matplotlib.pyplot as plt
 ### ----------------------------------------------------------- ###
-
-
-
-
-## This class have the fields that are part of the Country-Capital demonstration
-## You can see two fields:
-##   the 'name' field - will be used to get the country name
-##   the 'submit' button - the button the user will press to have the 
-##                         form be "posted" (sent to the server for process)
-class QueryFormStructure(FlaskForm):
-    name   = StringField('Country Name:  ' , validators = [DataRequired()])
-    submit = SubmitField('Submit')
-
 
 
 
@@ -73,17 +62,15 @@ class UserRegistrationFormStructure(FlaskForm):
     password   = PasswordField('Password:  ' , validators = [DataRequired()])
     submit = SubmitField('Submit')
 
-## This class have the fields that the user can set, to have the query parameters for analysing the data
-##   This form is where the user can set different parameters, depand on your project,
+##   This class have the fields that the user can set, to have the query parameters for analysing the data
+##   This form is where the user can set different parameters
 ##   that will be used to do the data analysis (using Pandas etc.)
-## You can see three fields:
-##   The fields that will be part of this form are specific to your project
-##   Please complete this class according to your needs
+##   You can see two fields:
 ##   the 'submit' button - the button the user will press to have the 
-##                         form be "posted" (sent to the server for process)
-#class DataParametersFormStructure(FlaskForm):
+##   form be "posted" (sent to the server for process)
+# class DataParametersFormStructure(FlaskForm):
 #    
-#    submit = SubmitField('Submit')
+# submit = SubmitField('Submit')
 
 
 class DataQuery(FlaskForm):
